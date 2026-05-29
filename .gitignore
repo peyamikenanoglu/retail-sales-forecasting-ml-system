@@ -1,0 +1,51 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE / OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Kaggle raw and generated data
+data/raw/
+data/interim/
+data/processed/
+
+# Trained model artifacts
+models/
+outputs/models/
+
+# CatBoost logs
+catboost_info/
+
+# Generated predictions
+outputs/predictions/
+
+# Temporary/local files
+*.log
+*.tmp
+project_tree.txt
+
+# Keep useful lightweight project outputs
+!outputs/
+!outputs/figures/
+!outputs/figures/*.png
+!outputs/metrics/
+!outputs/metrics/*.csv
+!outputs/metrics/*.json
+
+# Keep package marker files
+!.gitkeep

@@ -277,14 +277,35 @@ elif section == "Prediction Output":
 
     st.header("Prediction Output")
 
-    prediction_path = PREDICTIONS_DIR / "submission_lightgbm.csv"
+    full_prediction_path = PREDICTIONS_DIR / "submission_lightgbm.csv"
+    sample_prediction_path = METRICS_DIR / "sample_predictions.csv"
 
-    if prediction_path.exists():
-        predictions = pd.read_csv(prediction_path)
+    if full_prediction_path.exists():
+        predictions = pd.read_csv(full_prediction_path)
 
-        st.write("Prediction file found:")
-        st.code(str(prediction_path))
+        st.success("Full local prediction file found.")
+        st.code(str(full_prediction_path))
 
+    elif sample_prediction_path.exists():
+        predictions = pd.read_csv(sample_prediction_path)
+
+        st.info(
+            "Sample prediction file is shown for the deployed dashboard. "
+            "The full prediction file is generated locally and excluded from GitHub."
+        )
+        st.code(str(sample_prediction_path))
+
+    else:
+        predictions = None
+
+        st.warning(
+            "No prediction sample was found. Run the inference script locally first:"
+        )
+
+        st.code("python src/inference/predict.py")
+
+    if predictions is not None:
+        st.subheader("Prediction Preview")
         st.dataframe(predictions.head(50), use_container_width=True)
 
         st.write("Prediction shape:")
@@ -292,14 +313,6 @@ elif section == "Prediction Output":
 
         st.subheader("Sales Prediction Distribution")
         st.bar_chart(predictions["sales"].head(200))
-
-    else:
-        st.warning(
-            "Prediction file was not found. Run the inference script first:"
-        )
-
-        st.code("python src/inference/predict.py")
-
 
 elif section == "Project Notes":
 

@@ -24,6 +24,13 @@ The project focuses on:
 - Production-oriented prediction pipeline
 
 ---
+## Live Demo
+
+The Streamlit dashboard is available here:
+
+https://retail-sales-forecasting-ml-system.streamlit.app/
+
+The dashboard presents the project overview, validation results, feature importance, EDA figures, and sample prediction outputs.
 
 ## 2. Business Problem
 

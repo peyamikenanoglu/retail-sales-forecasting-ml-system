@@ -1,5 +1,31 @@
 # Retail Store Sales Forecasting with Time-Aware Machine Learning
 
+## 30-Second Summary
+
+This repository presents a production-style retail demand forecasting machine learning system for predicting future sales at the store-family level. The project focuses on time-aware validation, leakage-safe lag and rolling features, model comparison, forecast error analysis, and an interactive Streamlit dashboard for portfolio demonstration.
+
+| Area | Summary |
+|---|---|
+| Problem | Forecast future retail sales for each store, product family, and date |
+| Dataset | Kaggle Store Sales - Time Series Forecasting dataset |
+| Prediction unit | `date + store_nbr + family` |
+| Validation | Time-based split: training before 2017-07-01, validation from 2017-07-01 to 2017-08-15 |
+| Main model | LightGBM trained on `log1p(sales)` |
+| Baseline | Naive forecast using previous sales behavior |
+| Champion result | LightGBM RMSLE: **0.373578** on internal time-based validation |
+| Demo | Streamlit dashboard with project overview, validation results, feature importance, EDA figures, and sample predictions |
+| Scope | Portfolio-oriented retail forecasting system; not a live production forecasting service |
+
+What this project demonstrates:
+
+- Retail demand forecasting using historical sales, promotions, holidays, store metadata, and oil-price signals.
+- Time-aware validation instead of random splitting to avoid temporal leakage.
+- Leakage-safe lag and rolling features built from past sales behavior.
+- Model comparison between a naive forecast, CatBoost, LightGBM, and a simple ensemble.
+- Error analysis by product family to separate high-volume absolute error from relative forecasting weakness.
+- Streamlit dashboard presentation for business and technical review.
+
+
 A production-style machine learning project for forecasting retail store sales using historical sales, store metadata, promotions, holidays, oil prices, lag features, rolling statistics, and time-aware validation.
 
 This project was built as a serious GitHub portfolio project, not as a quick notebook experiment. The main goal is to demonstrate a complete machine learning workflow for a realistic retail forecasting problem: data inspection, exploratory analysis, leakage-safe feature engineering, time-based validation, model comparison, inference pipeline, and clean project organization.
